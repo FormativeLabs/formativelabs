@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en-us" lang="en-us">
+<head>
+<title>Formative Labs</title>
+<link rel="shortcut icon" href="images/favicon.png" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css" />
+<script type="text/javascript" src="http://ecopetts.formativelabs.com/js/jquery.min.js" ></script>
+<script type="text/javascript" src="http://ecopetts.formativelabs.com/js/jquery.validate.js" ></script>
+<script src="http://ecopetts.formativelabs.com/js/jquery.simplemodal.js" type="text/javascript" ></script>
+<script type="text/javascript" >
+  $(document).ready(function () {
+    $("#cemail").click(function() {
+      $(this).val('');
+    });
+
+    $("#beta_email_form").validate({ 
+      errorLabelContainer: $(".beta_email_form_error"),
+      submitHandler: function(form) {
+        $.post('http://ecopetts.formativelabs.com/save_email', $("#beta_email_form").serialize(), 
+          function() {
+            $("#cemail").val('');
+            $('#simplemodal-data').modal({
+              minHeight:310,
+              minWidth: 470,
+              onClose: function (dialog) {
+                dialog.data.fadeOut('slow', function () {
+                  dialog.container.hide('slow', function () {
+                    dialog.overlay.slideUp('slow', function () {
+                      $.modal.close();
+                    });
+                  });
+              }); },         onShow: function (dialog) {
+              $("#close_btn").click(function () { $.modal.close(); });
+             }});
+          })
+          return false;
+        }
+    });
+  });
+</script>
+
+<style type="text/css">
+!-- 
+body {
+ margin-left: 0px;
+ margin-top: 0px;
+ margin-right: 0px;
+ margin-bottom: 0px;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	font-size: 36px;
+	line-height: 50px;
+}
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	font-size: 30px;
+	font-weight: normal;
+	line-height: 50px;
+}
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	font-size: 20px;
+}
+
+h4 {
+	font-family: Arial, Helvetica, sans-serif;
+	color: #3a3a3a;
+	font-size: 16px;
+}
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #FFF;
+}
+form {
+	display: block;
+ 	clear: both;
+}
+#signin {
+	width: 300px;
+	float: right;
+	top: 59px;
+	margin: 40px 0 20px 0;
+	text-align: right;
+}
+#facebook {
+	clear: both;
+	margin: 0;
+	padding: 5px;
+	width: 360px;
+	height: 70px;
+}
+#container {
+	width: 560px;
+	margin: 0 auto;
+	display: block;
+	clear: both;
+	left: 195px;
+	top: 215px;
+}
+#container h1 {
+	margin: 0px;
+}
+.textform {
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	float: left;
+	font-size: 24px;
+	background: #FFF;
+	-pie-background: #FFF;
+	border: 2px solid #ff9e23;
+	padding-left: 5px;
+	line-height: 35px;
+	height: 35px;
+	width: 250px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url('/PIE.htc');
+}
+.awesome, .awesome:visited {
+	display: inline-block;
+	float: left;
+	height: 40px;
+	width: 190px;
+	margin-left: 10px;
+	text-decoration: none;
+	text-shadow:0 -1px 1px rgba(0, 0, 0, 0.25);
+	text-align: center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
+	position: relative;
+	color: #FFF;
+	font-size: 25px;
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 40px;
+	border: 1px solid #333;
+	cursor: pointer;
+	background: #ff9e23;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff9e23), to(#cb5500));
+	background: -moz-linear-gradient(#ff9e23, #cb5500);
+	-pie-background: linear-gradient(#ff9e23, #cb5500);
+	behavior: url('/PIE.htc');
+	background-color: #FEAD3C;
+}
+.awesome:hover {
+	color: #FFF;
+	border: 1px solid #333;
+	cursor: pointer;
+	background: #ff9e23;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#ff9e23), to(#ff9e23));
+	background: -moz-linear-gradient(#ff9e23, #ff9e23);
+	-pie-background: linear-gradient(#ff9e23, #ff9e23);
+	behavior: url('/PIE.htc');
+	background-color: #D65C26;
+}
+.awesome:active {
+	top: 1px;
+}
+.silver.awesome, .silver.awesome:visited {
+	font-size: 20px;
+	width: 90px;
+	height: 30px;
+	float: none;
+	padding: 0px 14px 0px 14px;
+	color: #414141;
+	border: 1px solid #414141;
+	cursor: pointer;
+	background: #bbbbbb;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f3f3f3), to(#bbbbbb));
+	background: -moz-linear-gradient(#f3f3f3, #bbbbbb);
+	-pie-background: linear-gradient(#f3f3f3, #bbbbbb);
+	behavior: url('/PIE.htc');
+}
+.silver.awesome:hover {
+	color: #414141;
+	border: 1px solid #414141;
+	cursor: pointer;
+	background: #6bc1e2;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#f3f3f3), to(#f3f3f3));
+	background: -moz-linear-gradient(#f3f3f3, #f3f3f3);
+	-pie-background: linear-gradient(#f3f3f3, #f3f3f3);
+	behavior: url('/PIE.htc');
+}
+a:link {
+	color: #6EB550;
+}
+a:visited {
+	color: #6EB550;
+}
+a:hover {
+	color: #ccc;
+}
+a:active {
+	color: #6EB550;
+}
+/** MODAL **/
+ 
+#simplemodal-overlay {
+	background-color:#000;
+	cursor:wait;
+}
+#simplemodal-container {
+	width: 450px;
+	height: auto;
+	color: #4e5b63;
+	padding: 10px;
+	margin: 0 auto;
+	display: block;
+	overflow: visible;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-khtml-border-radius: 10px;
+	border-radius: 10px;
+	border: #2e7285 solid 5px;
+	background: #FFF;
+	behavior: url('/PIE.htc');
+}
+#simplemodal-container a.modalCloseImg {
+	background:url(images/x.png) no-repeat;
+	width:25px;
+	height:29px;
+	display:inline;
+	z-index:3200;
+	position:absolute;
+	top:-15px;
+	right:-16px;
+	cursor:pointer;
+}
+.simplemodal-wrap {
+	padding: 10px;
+}
+.simplemodal-data h1 {
+	width: 430px;
+	font-size:18px;
+	font-weight: bold;
+	color: #2e7285;
+	margin: 0;
+	padding-top: 0px;
+	display: block;
+	clear: both;
+}
+.simplemodal-data p {
+	font-size: 18px;
+	font-weight:normal;
+	padding: 10px;
+	color: #4d5c63;
+	line-height: 120%;
+}
+.simplemodal-data b {
+	color:#287286;
+	font-weight: normal;
+}
+.simplemodal-data #image-block {
+	width: 200px;
+	min-height: 180px;
+	display: inline-block;
+	float: left;
+}
+.simplemodal-data #image-block-inner {
+	width: 200px;
+	height: 180px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.simplemodal-data #text-block {
+	width: 230px;
+	min-height: 180px;
+	display: inline-block;
+	float: left;
+	vertical-align: middle;
+	text-align: center;
+}
+.simplemodal-data #text-block-inner {
+	width: 230px;
+	height: 180px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: left;
+}
+.simplemodal-data #modal-bar {
+	width: 100%;
+	display: block;
+	float: none;
+	clear: both;
+}
+/** Email Field **/
+.beta_email_form_error {
+	display: none;
+	color: #333333;
+	font-size: 24px;
+	margin-top: 20px;
+	padding-left: 56px;
+	padding-top: 8px;
+	height: 48px;
+	background-image: url('images/error.png');
+	background-repeat: no-repeat;
+	vertical-align: middle;
+}
+
+
+#footer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #333;
+	text-align:center;
+}
+
+#footer a {
+	color:#390;
+}
+
+
+
+#navlist
+{
+margin: 0;
+padding: 0 0 20px 10px;
+}
+
+#navlist ul, #navlist li
+{
+font-family: Arial, Helvetica, sans-serif;
+font-size:14px;
+margin: 0;
+padding: 0;
+display: inline;
+list-style-type: none;
+}
+
+#navlist a:link, #navlist a:visited
+{
+	float: left;
+	line-height: 14px;
+	font-weight: bold;
+	margin: 0 10px 4px 10px;
+	text-decoration: none;
+	color: #666;
+}
+
+#navlist a:link#current, #navlist a:visited#current, #navlist a:hover
+{
+	border-bottom: 4px solid #70B652;
+	padding-bottom: 2px;
+	background: transparent;
+	color: #398DCC;
+}
+
+#navlist a:hover { color: #398DCC; 
+}
+body {
+	background-image: url(images/landing-page-tile.png);
+	background-repeat: repeat-x;
+}
+
+-->
+</style>
+</head><div id="master_body" style="position:relative; float:none; margin-left:auto; margin-right:auto; display:block; width:950px; height:698px; background-image:url(images/landing-page.png); background-repeat-x:no-repeat; background-repeat-y:no-repeat; background-repeat:no-repeat; background-size:inherit; background-position:inherit inherit; background-position-x:inherit; background-position-y:inherit;">
+ <div id="navcontainer" style="position:absolute; width:313px; left:595px; top:58px; height: 29px;" >
+   
+   <ul id="navlist">
+<li id="active"><a href="index.html" id="current">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="jobs.html">Jobs</a></li>
+<li><a href="http://blog.formativelabs.com">Blog</a></li>
+</ul>
+  </div>
+      
+        <div id="container" style="position:absolute">
+     
+          <h1>We’re working on bridging the gap between the social web and energy conservation.</h1>
+          <h2>Sign up to be invited to our beta </h2>
+             <form id="form1" name="form1" class="wufoo topLabel page" autocomplete="off" enctype="multipart/form-data" method="post" action="http://formativelabs.wufoo.com/forms/sign-up-for-early-access-to-our-first-product/">
+           <input id="Field1" name="Field1" size="25" type="text" class="required email textform" value="Enter Your Email" maxlength="255" tabindex="1" /> 
+           <input id="Field3" name="Field3" type="hidden" class="field text medium" value="formative" maxlength="25" tabindex="2" onkeyup=""/>
+           <input type="hidden" name="idstamp" id="idstamp" value="A9K/uAUTIoEc9F+R1p31eWjCbcrcd28nh4jidb4bA8g=" />
+		   <input id="saveForm" name="saveForm" class="submit awesome" type="submit" value="INVITE ME" onmousedown="doSubmitEvents();" />
+        </form> 
+          <div style="clear:both;"></div>
+          <div class="beta_email_form_error"></div>
+      </div>
+  <div id="footer" style="height:40px; position:absolute; width:950px; left:0px; bottom:-30px;" >© Copyright 2010 Formative Labs. All right reserved.       <a href="/about.html">About Us</a>    |    <a href="jobs.html">Jobs</a>    |    <a href="http://blog.formativelabs.com">Blog</a></div>
+      <div style="position:absolute; top: 105px; left: 719px;"><a href="http://twitter.com/Formativelabs"><img src="images/twitter.png" width="159" height="118" alt="follow us on twitter" /></a></div>
+      <div id="email" style="position:absolute; top: 541px; left: 321px;"><h4>drop us a line at <a href="mailto:info@formativelabs.com">info@formativelabs.com</a></h4></div>
+</div>
+ <div id="simplemodal-data" style="display:none; " >
+    <p class="paragraph_style" >NICE! YOU'RE ON THE LIST</p>
+      <div id="image-block" >
+      <div id="image-block-inner" >
+      <img src="images/fb_fan.png" />
+      </div>
+      </div>
+      <div id="text-block" >
+      <div id="text-block-inner" >
+      <p class="paragraph_style_4" >Stay tuned for your invite.</p>
+      <p class="paragraph_style_4" >Join us on Facebook to keep up to date on the latest from ecopetts.</p>
+      </div>      </div>      <div id="modal-bar" >
+       <p style="text-align:center; " >
+<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FFormative-Labs%2F121873741179445%3Fref%3Dts&layout=standard&show_faces=true&width=300&action=like&font=arial&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border-width:initial; border-top-color:#000000; border-right-color:#000000; border-bottom-color:#000000; border-left-color:#000000; overflow:hidden; width:300px; height:80px; border-style:none; " allowtransparency="true" ></iframe>
+       </p>
+      </div>
+</div>
+<script type="text/javascript">  
+  $(document).ready(function () {
+    $("#cemail").click(function() {
+      $(this).val('');
+    });
+
+/*
+    $("#beta_email_form").validate({ 
+      errorLabelContainer: $(".beta_email_form_error") });
+*/
+  });
+
+</script>
+</body></html>
